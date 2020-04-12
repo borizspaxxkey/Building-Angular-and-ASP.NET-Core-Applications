@@ -21,3 +21,10 @@ ng g c books -m app // generates book component inside the app module
 4.  <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
 5.  formControlName => name defined in formGroup eg formControlName="title"
 6.  import ReactiveFormsModule into appModule
+
+// BootStrap
+class="btn btn-default btn-sm" // type color size
+
+//router
+<a [routerLink]="['/books']" class="card-link">Back</a> // navigates the user to the specified route
+this.router.navigate("['/book-update']")

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Book from 'src/app/interfaces/book';
 
 @Component({
   selector: 'app-show-book',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-book.component.css']
 })
 export class ShowBookComponent implements OnInit {
+  book: Book;
 
   constructor() { }
 
@@ -13,3 +15,4 @@ export class ShowBookComponent implements OnInit {
   }
 
 }
+

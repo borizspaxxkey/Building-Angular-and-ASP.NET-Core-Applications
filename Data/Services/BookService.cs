@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using summaries.Controllers.Data.Models;
+using System.Linq;
+using summaries.Data.Models;
 
 namespace summaries.Data.Services
 {
@@ -7,7 +8,7 @@ namespace summaries.Data.Services
   {
     public void AddBook(Book newBook)
     {
-      throw new System.NotImplementedException();
+      Data.Books.Add(newBook);
     }
 
     public void DeleteBook(int id)
@@ -17,7 +18,7 @@ namespace summaries.Data.Services
 
     public List<Book> GetAllBooks()
     {
-      throw new System.NotImplementedException();
+      return Data.Books.ToList();
     }
 
     public Book GetBookById(int id)
@@ -27,7 +28,15 @@ namespace summaries.Data.Services
 
     public void UpdateBook(int id, Book newBook)
     {
-      throw new System.NotImplementedException();
+      var oldBook = Data.Books.FirstOrDefault(b => b.Id == id);
+      if(oldBook != null){
+        oldBook.Title = newBook.Title;
+        oldBook.Author = newBook.Title;
+        oldBook.Description = newBook.Description;
+        oldBook.Rate = newBook.Rate;
+        oldBook.DateStart = newBook.DateStart;
+        oldBook.DateRead = newBook.DateRead;      
+      }
     }
   }
 }

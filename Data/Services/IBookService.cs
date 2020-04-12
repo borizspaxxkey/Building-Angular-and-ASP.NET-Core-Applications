@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using summaries.Controllers.Data.Models;
+using summaries.Data.Models;
 
 namespace summaries.Data.Services
 {

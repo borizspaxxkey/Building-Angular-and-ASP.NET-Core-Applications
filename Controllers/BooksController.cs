@@ -21,7 +21,7 @@ namespace summaries.Controllers
     [HttpPost("AddBook")]
     public IActionResult AddBook([FromBody] Book book){
       _service.AddBook(book); 
-      return Ok("Added");
+      return Ok();
     }
 
     [HttpGet("[action]")]

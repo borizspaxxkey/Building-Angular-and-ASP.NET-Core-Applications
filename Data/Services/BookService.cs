@@ -32,7 +32,7 @@ namespace summaries.Data.Services
       var oldBook = Data.Books.FirstOrDefault(b => b.Id == id);
       if(oldBook != null){
         oldBook.Title = newBook.Title;
-        oldBook.Author = newBook.Title;
+        oldBook.Author = newBook.Author;
         oldBook.Description = newBook.Description;
         oldBook.Rate = newBook.Rate;
         oldBook.DateStart = newBook.DateStart;

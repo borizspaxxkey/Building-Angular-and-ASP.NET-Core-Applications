@@ -19,8 +19,9 @@ ng g c books -m app // generates book component inside the app module
     title: [null, Validators.required] // null means no initial value set in the form control
     })
 4.  <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
-5.  formControlName => name defined in formGroup eg formControlName="title"
-6.  import ReactiveFormsModule into appModule
+5.  this.service.updateBook(this.updateBookForm.value); // to get the value from the reactive form
+6.  formControlName => name defined in formGroup eg formControlName="title"
+7.  import ReactiveFormsModule into appModule
 
 // BootStrap
 class="btn btn-default btn-sm" // type color size
@@ -28,8 +29,28 @@ class="btn btn-default btn-sm" // type color size
 //router
 <a [routerLink]="['/books']" class="card-link">Back</a> // navigates the user to the specified route
 
-1.  inject router service // constructor(private router: Router) { }
+1.  inject router service // constructor(private router: Router) { } to navigate to a different component
 2.  this.router.navigate("['/book-update']")
 3.  constructor( private route: ActivatedRoute) { } // import activatedRoute
 4.  this.route.snapshot.params.id // to get values from the url, must match whats defined in the route in app module eg. { path: 'show-book/:id', component: ShowBookComponent }
-5.
+
+// Updating Existing Data
+
+1.  Create Service Method
+2.  Create View
+3.  Create FormGroup
+4.  Inject Service
+5.  Handle Response
+
+// Getting a Single Book [Book Details]
+
+1.  Create Service Method
+2.  inject Service
+3.  Handle result
+
+// Adding new data from Angular
+
+1.  Create method in Angular Service
+2.  Inject Service in component
+3.  call method from Angular service
+4.  handle the response

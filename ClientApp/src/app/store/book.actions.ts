@@ -4,17 +4,22 @@ import Book from '../interfaces/book';
 
 export class loadBooksAction implements Action {
   readonly type = types.LOAD_BOOKS;
-  constructor() {
-
-  }
+  constructor() { }
 }
 
 export class loadBooksSuccessAction implements Action {
   readonly type = types.LOAD_BOOKS_SUCCESS;
-  constructor(public payload: Book[]) {
-
-  }
+  constructor(public payload: Book[]) { }
 }
 
+export class deleteBookAction implements Action {
+  readonly type = types.DELETE_BOOK;
+  constructor(public payload: number) { }
+}
 
-export type Actions = loadBooksAction | loadBooksSuccessAction
+export class deleteBookSuccessAction implements Action {
+  readonly type = types.DELETE_BOOK_SUCCESS;
+  constructor(public payload: number) { }
+}
+
+export type Actions = loadBooksAction | loadBooksSuccessAction | deleteBookAction | deleteBookSuccessAction;

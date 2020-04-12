@@ -13,6 +13,10 @@ import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { AuthGuard } from './auth.guard';
+import { Store, StoreModule } from '@ngrx/store';
+import { BookEffects } from './store/book.effects';
+import { BookReducer } from './store/book.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import { AuthGuard } from './auth.guard';
       { path: 'delete-book/:id', component: DeleteBookComponent, canActivate: [AuthGuard] },
       { path: 'show-book/:id', component: ShowBookComponent, canActivate: [AuthGuard] }
 
-    ])
+    ]),
+    // NgRx
+    StoreModule.forRoot({ applicationState: BookReducer }),
+    EffectsModule.forRoot([BookEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

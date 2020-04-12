@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import Book from 'src/app/interfaces/book';
 import { BookService } from 'src/app/services/book.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store/app.state';
+import { Store } from '@ngrx/store';
+import * as bookActions from './../../store/book.actions';
+import Book from 'src/app/interfaces/book';
 
 @Component({
   selector: 'app-books',
@@ -10,14 +14,21 @@ import { Router } from '@angular/router';
 })
 export class BooksComponent implements OnInit {
 
-  books: Book[];
+  public books: Book[];
+  public books$: Observable<any>;
 
-  constructor(private service: BookService, private router: Router) { }
+  constructor(
+    private store: Store<AppState>,
+    private router: Router) {
+    this.books$ = this.store.select('applicationState');
+  }
 
   ngOnInit() {
-    this.service.getAllBooks().subscribe((data) => {
-      this.books = data;
-    });
+    // this.service.getAllBooks().subscribe(data => {
+    //   this.books = data;
+    // })
+    this.store.dispatch(new bookActions.loadBooksAction());
+    this.books$.subscribe((state: AppState) => this.books = state.books);
   }
 
   showBook(id: number) {

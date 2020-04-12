@@ -12,6 +12,7 @@ import { DeleteBookComponent } from './components/delete-book/delete-book.compon
 import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,11 @@ import { UpdateBookComponent } from './components/update-book/update-book.compon
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'books', component: BooksComponent },
-      { path: 'new-book', component: NewBookComponent },
-      { path: 'update-book/:id', component: UpdateBookComponent },
-      { path: 'delete-book/:id', component: DeleteBookComponent },
-      { path: 'show-book/:id', component: ShowBookComponent }
+      { path: 'books', component: BooksComponent, canActivate: [AuthGuard] },
+      { path: 'new-book', component: NewBookComponent, canActivate: [AuthGuard] },
+      { path: 'update-book/:id', component: UpdateBookComponent, canActivate: [AuthGuard] },
+      { path: 'delete-book/:id', component: DeleteBookComponent, canActivate: [AuthGuard] },
+      { path: 'show-book/:id', component: ShowBookComponent, canActivate: [AuthGuard] }
 
     ])
   ],

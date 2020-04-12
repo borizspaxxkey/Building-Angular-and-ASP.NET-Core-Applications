@@ -8,20 +8,21 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/new-book']">Add</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/books']">Books</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="!auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" (click)='auth.login()'>Login</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" (click)='auth.logout'>Logout</a>
+          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)='auth.logout()'>Logout</a>
           </li>
 
         </ul>

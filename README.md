@@ -84,3 +84,5 @@ npm install @ngrx/core @ngrx/effects @ngrx/store
 1.  setup callback url
 2.  setup logout url
 3.  npm install @auth0/auth0-spa-js
+4.  inject authService
+5.  ng g guard auth// to generate auth guard 1.canActivate, 2.willActivatechild, 3.canload

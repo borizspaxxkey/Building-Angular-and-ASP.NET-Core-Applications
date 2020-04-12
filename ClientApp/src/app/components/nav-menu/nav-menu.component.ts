@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -6,11 +6,15 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
+export class NavMenuComponent implements OnInit {
   isExpanded = false;
 
   constructor(private auth: AuthService) {
 
+  }
+
+  ngOnInit(): void {
+    this.auth.handleAuthCallback();
   }
   collapse() {
     this.isExpanded = false;

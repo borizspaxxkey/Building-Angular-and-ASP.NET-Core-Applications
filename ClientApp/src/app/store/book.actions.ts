@@ -10,8 +10,11 @@ export class loadBooksAction implements Action {
 }
 
 export class loadBooksSuccessAction implements Action {
-  readonly type = types.LOAD_BOOKS;
+  readonly type = types.LOAD_BOOKS_SUCCESS;
   constructor(public payload: Book[]) {
 
   }
 }
+
+
+export type Actions = loadBooksAction | loadBooksSuccessAction

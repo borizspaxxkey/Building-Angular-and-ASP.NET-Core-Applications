@@ -86,3 +86,21 @@ npm install @ngrx/core @ngrx/effects @ngrx/store
 3.  npm install @auth0/auth0-spa-js
 4.  inject authService
 5.  ng g guard auth// to generate auth guard 1.canActivate, 2.willActivatechild, 3.canload
+
+// NOTE TOSELF
+import \* as bookActions from 'module' used if you need to import several exported classes from a file
+eg export class loadBooksAction implements Action {
+readonly type = types.LOAD_BOOKS;
+constructor() {
+
+}
+}
+
+export class loadBooksSuccessAction implements Action {
+readonly type = types.LOAD_BOOKS_SUCCESS;
+constructor(public payload: Book[]) {
+
+}
+}
+
+then bookActions.loadBooksAction

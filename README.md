@@ -27,4 +27,9 @@ class="btn btn-default btn-sm" // type color size
 
 //router
 <a [routerLink]="['/books']" class="card-link">Back</a> // navigates the user to the specified route
-this.router.navigate("['/book-update']")
+
+1.  inject router service // constructor(private router: Router) { }
+2.  this.router.navigate("['/book-update']")
+3.  constructor( private route: ActivatedRoute) { } // import activatedRoute
+4.  this.route.snapshot.params.id // to get values from the url, must match whats defined in the route in app module eg. { path: 'show-book/:id', component: ShowBookComponent }
+5.

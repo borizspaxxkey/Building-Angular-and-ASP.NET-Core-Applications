@@ -44,6 +44,12 @@ namespace summaries.Controllers
       return Ok();
     }
 
+    [HttpGet("SingleBook/{id}")]
+    public IActionResult GetBookById(int id)
+    {
+      var book = _service.GetBookById(id);
+      return Ok(book);
+    }
 
   }
 }

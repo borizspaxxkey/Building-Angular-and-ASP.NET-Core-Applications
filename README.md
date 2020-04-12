@@ -69,3 +69,18 @@ catch (Exception ex)
 {
 return BadRequest(ex.Message);
 }
+
+## NgRX Core Concepts
+
+1.  Store - database of the application (state altered only by actions)
+2.  State - altered only by action (single immutable data structure)
+3.  Reducer - tables of the application
+4.  Actions - payloads of information [unique event that happen across the application]
+
+npm install @ngrx/core @ngrx/effects @ngrx/store
+
+// Authentication with Auth0
+
+1.  setup callback url
+2.  setup logout url
+3.  npm install @auth0/auth0-spa-js

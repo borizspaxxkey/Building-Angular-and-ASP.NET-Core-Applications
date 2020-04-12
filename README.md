@@ -54,3 +54,18 @@ class="btn btn-default btn-sm" // type color size
 2.  Inject Service in component
 3.  call method from Angular service
 4.  handle the response
+
+// Book Controller
+Wrap request in try catch , send Ok 200 in good request. Send Bad 500 in error request
+try
+{
+if(book != null){
+service.AddBook(book);
+return Ok(book);
+}
+return BadRequest("Book was not added");
+}
+catch (Exception ex)
+{
+return BadRequest(ex.Message);
+}

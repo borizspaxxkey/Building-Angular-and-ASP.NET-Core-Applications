@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using summaries.Data.Models;
 using summaries.Data.Services;
 
@@ -20,8 +16,19 @@ namespace summaries.Controllers
 
     [HttpPost("AddBook")]
     public IActionResult AddBook([FromBody] Book book){
-      _service.AddBook(book); 
-      return Ok();
+      try
+      {
+        if(book.Author != null && book.Title != null && book.Description != null ){
+          _service.AddBook(book); 
+          return Ok(book);
+        }
+        return BadRequest("Book was not added");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
+  
     }
 
     [HttpGet("[action]")]

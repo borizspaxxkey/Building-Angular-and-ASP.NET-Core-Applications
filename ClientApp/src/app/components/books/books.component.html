@@ -16,15 +16,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let book of books">
-      <td>{{book.title}}</td>
-      <td>{{book.description | slice: 0:50}}...</td>
+      <td>{{book.title | slice: 0:10}}...</td>
+      <td>{{book.description | slice: 0:40}}...</td>
       <td>{{book.author}}</td>
       <td>{{book.rate}}</td>
       <td>{{book.dateStart | date: "dd/MM/yyyy"}}</td>
       <td>{{book.dateRead  | date: "dd/MM/yyyy"}}</td>
       <td>{{book.dateRead ? "Read" : book.dateStart ? "In Progress" : "Not Started"}}</td>
       <td>
-        <button type="button" class="btn btn-default btn-sm" (click)="showBook(book.id)">Show</button>
+        <button type="button" class="btn btn-default btn-sm" (click)="showBook(book.id)"> Show </button>
+        <button type="button" class="btn btn-success btn-sm" (click)="updateBook(book.id)"> Update </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteBook(book.id)"> Delete </button>
       </td>
     </tr>
   </tbody>

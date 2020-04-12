@@ -16,6 +16,7 @@ export class NavMenuComponent implements OnInit {
   ngOnInit(): void {
     this.auth.handleAuthCallback();
   }
+
   collapse() {
     this.isExpanded = false;
   }
